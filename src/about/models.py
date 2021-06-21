@@ -40,24 +40,35 @@ class ExtraSkill(models.Model):
 
 class SoftSkill(models.Model):
 
-    LEVEL = (
-        ("A1", "Beginner"),
-        ("A2", "Elementary"),
-        ("B1", "Intermediate"),
-        ("B2", "Upper intermediate"),
-        ("C1", "Advanced"),
-        ("C2", "Mastery"),
-    )
-
-    english_lvl = models.CharField(max_length=20, choices=LEVEL)
     name = models.CharField(max_length=50)
 
     def __str__(self):
-        return f"{self.english_lvl} and {self.name}"
+        return self.name
 
     class Meta:
         verbose_name = "SoftSkill"
         verbose_name_plural = "SoftSkills"
+
+
+class English(models.Model):
+
+    LEVEL = (
+        ("Beginner", "Beginner"),
+        ("Elementary", "Elementary"),
+        ("Intermediate", "Intermediate"),
+        ("Upper intermediate", "Upper intermediate"),
+        ("Advanced", "Advanced"),
+        ("Mastery", "Mastery"),
+    )
+
+    english_lvl = models.CharField(max_length=20, choices=LEVEL)
+
+    def __str__(self):
+        return self.english_lvl
+
+    class Meta:
+        verbose_name = "EnglishLevel"
+        verbose_name_plural = "EnglishLevels"
 
 
 class Resume(models.Model):
@@ -71,6 +82,7 @@ class Resume(models.Model):
     hard_skills = models.ManyToManyField(HardSkill)
     extra_skills = models.ManyToManyField(ExtraSkill)
     soft_skills = models.ManyToManyField(SoftSkill)
+    english_lvls = models.OneToOneField(English, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
