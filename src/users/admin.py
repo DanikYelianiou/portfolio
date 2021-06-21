@@ -8,6 +8,7 @@ from .models import CustomUser
 class CustomUserAdmin(UserAdmin):
 
     list_display = ('first_name', 'last_name', 'email', 'phone')
+    list_display_links = ('first_name', 'last_name', 'email', 'phone')
 
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
