@@ -1,6 +1,6 @@
 from rest_framework import generics
 
-from .models import Resume, SoftSkill, ExtraSkill, HardSkill, GitHub
+from .models import Resume
 from .serializers import ResumeSerializer
 
 
