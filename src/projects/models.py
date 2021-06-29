@@ -1,5 +1,7 @@
 from django.db import models
 
+from src.users.models import CustomUser
+
 
 class Technology(models.Model):
 
@@ -28,3 +30,18 @@ class Project(models.Model):
     class Meta:
         verbose_name = "Project"
         verbose_name_plural = "Projects"
+
+
+class Comment(models.Model):
+
+    name = models.ForeignKey(CustomUser, on_delete=models.CASCADE, )
+    text = models.TextField(max_length=5000)
+    parent = models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True, related_name="children")
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="comments")
+
+    def __str__(self):
+        return str(self.name)
+
+    class Meta:
+        verbose_name = "Comment"
+        verbose_name_plural = "Comments"

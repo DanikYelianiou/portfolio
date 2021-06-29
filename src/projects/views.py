@@ -1,7 +1,7 @@
 from rest_framework import generics
 
-from .serializers import ProjectListSerializer, ProjectDetailSerializer
-from .models import Project
+from .serializers import ProjectListSerializer, ProjectDetailSerializer, CommentCreateSerializer
+from .models import Project, Comment
 from .service import PaginationProjects
 
 
@@ -16,3 +16,9 @@ class ProjectDetailView(generics.RetrieveAPIView):
 
     queryset = Project.objects.all()
     serializer_class = ProjectDetailSerializer
+
+
+class CommentCreateView(generics.CreateAPIView):
+
+    queryset = Comment.objects.all()
+    serializer_class = CommentCreateSerializer
