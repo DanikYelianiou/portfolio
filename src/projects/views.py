@@ -1,4 +1,4 @@
-from rest_framework import generics
+from rest_framework import generics, permissions
 
 from .serializers import ProjectListSerializer, ProjectDetailSerializer, CommentCreateSerializer
 from .models import Project, Comment
@@ -22,3 +22,4 @@ class CommentCreateView(generics.CreateAPIView):
 
     queryset = Comment.objects.all()
     serializer_class = CommentCreateSerializer
+    permission_classes = [permissions.IsAuthenticated]
