@@ -1,10 +1,14 @@
-from rest_framework import generics
+from rest_framework import permissions
+from rest_framework.viewsets import ModelViewSet
 
 from .models import CustomUser
 from .serializers import CustomUserSerializer
 
 
-class ProfileView(generics.RetrieveAPIView):
+class ProfileView(ModelViewSet):
 
-    queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return CustomUser.objects.filter(id=self.request.user.id)

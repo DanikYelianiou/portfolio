@@ -4,5 +4,5 @@ from .views import ProfileView
 
 
 urlpatterns = [
-    path('profile/<int:pk>/', ProfileView.as_view()),
+    path('profile/<int:pk>/', ProfileView.as_view({'get': 'retrieve', 'put': 'update'})),
 ]
