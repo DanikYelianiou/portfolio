@@ -10,7 +10,7 @@ class Contact(models.Model):
     contact_text = models.TextField(max_length=1500)
 
     def __str__(self):
-        return f"{self.user}({self.email}) - {self.contact_text}"
+        return f"С вами связывается {self.user} ({self.email}) из компании {self.company}"
 
 
 class MyContact(models.Model):
