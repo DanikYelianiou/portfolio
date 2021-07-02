@@ -5,12 +5,11 @@ from django.db import models
 class Contact(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="user")
-    email = models.EmailField(max_length=128)
     company = models.CharField(max_length=128)
     contact_text = models.TextField(max_length=1500)
 
     def __str__(self):
-        return f"С вами связывается {self.user} ({self.email}) из компании {self.company}"
+        return f"С вами связывается {self.user} из компании {self.company}"
 
 
 class MyContact(models.Model):

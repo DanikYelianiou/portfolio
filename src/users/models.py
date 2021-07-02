@@ -14,4 +14,4 @@ class CustomUser(AbstractUser):
     gender = models.CharField(max_length=10, choices=GENDER, null=True, blank=True)
 
     def __str__(self):
-        return "{} {}".format(self.first_name, self.last_name)
+        return "{} {} {}".format(self.first_name, self.last_name, self.email)
