@@ -8,10 +8,10 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
-    path('api/v1/', include('src.users.urls')),
-    path('api/v1/', include('src.about.urls')),
-    path('api/v1/', include('src.projects.urls')),
-    path('api/v1/', include('src.contacts.urls')),
+    path('api/', include('src.users.urls')),
+    path('api/', include('src.about.urls')),
+    path('api/', include('src.projects.urls')),
+    path('api/', include('src.contacts.urls')),
 ]
 
 if settings.DEBUG:
